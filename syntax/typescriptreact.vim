@@ -14,7 +14,14 @@ let s:tsx_cpo = &cpo
 set cpo&vim
 
 syntax case match
-
+if !exists("main_syntax")
+  if version < 600
+    syntax clear
+  elseif exists("b:current_syntax")
+    finish
+  endif
+  let main_syntax = "typescript"
+endif
 if exists('b:current_syntax')
   let s:current_syntax = b:current_syntax
   unlet b:current_syntax
