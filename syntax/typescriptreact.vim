@@ -22,6 +22,7 @@ if !exists("main_syntax")
   endif
   let main_syntax = "typescript"
 endif
+
 if exists('b:current_syntax')
   let s:current_syntax = b:current_syntax
   unlet b:current_syntax
@@ -568,6 +569,9 @@ syn keyword WebBrowser window localStorage
 syn keyword ReactLifeCycleMethods componentWillMount shouldComponentUpdate componentWillUpdate componentDidUpdate componentWillReceiveProps componentWillUnmount componentDidMount
 
 let b:current_syntax = 'typescriptreact'
+if main_syntax == 'typescript'
+  unlet main_syntax
+endif
 
 let &cpo = s:tsx_cpo
 unlet s:tsx_cpo
